@@ -31,6 +31,8 @@ func main() {
 	// Repositori de la BBDD
 
 	// Configuració de la pantalla
+	window := fyneApp.NewWindow("Eco Hort App")
 
 	// Mostrar i executar l'app
+	window.ShowAndRun()
 }
