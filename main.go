@@ -2,8 +2,10 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
 )
 
 type Config struct {
@@ -16,8 +18,13 @@ var myApp Config
 
 func main() {
 	// Crear app amb fyne
+	// id de l'app amb domini invers
+	fyneApp := app.NewWithID("cat.cibernarium.ecohortapp")
+	myApp.App = fyneApp
 
 	// definirem els nostres logs
+	myApp.InfoLog = log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	myApp.ErrorLog = log.New(os.Stdout, "ERROR\t", log.Ldate|log.Lshortfile)
 
 	// Conexió a la BBDD
 
