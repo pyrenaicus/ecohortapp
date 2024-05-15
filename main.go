@@ -36,6 +36,8 @@ func main() {
 	myApp.MainWindow.Resize(fyne.NewSize(800, 500)) // Definim tamany finestra pral
 	myApp.MainWindow.SetFixedSize(true)             // Fixem el tamany
 	myApp.MainWindow.SetMaster()                    // PIndiquem que es pantalla pral
+
+	myApp.makeUI()
 	// Mostrar i executar l'app
 	myApp.MainWindow.ShowAndRun()
 }
