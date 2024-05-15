@@ -37,5 +37,5 @@ func main() {
 	myApp.MainWindow.SetFixedSize(true)             // Fixem el tamany
 	myApp.MainWindow.SetMaster()                    // PIndiquem que es pantalla pral
 	// Mostrar i executar l'app
-	window.ShowAndRun()
+	myApp.MainWindow.ShowAndRun()
 }
