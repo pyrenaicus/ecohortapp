@@ -1,16 +1,19 @@
 package main
 
 import (
-	"fyne.io/fyne/v2/app"
-	"fyne.io/fyne/v2/widget"
+	"log"
+
+	"fyne.io/fyne/v2"
 )
 
+type Config struct {
+	App      fyne.App    // guardat de l'App, el canvas
+	InfoLog  *log.Logger // log d'execució
+	ErrorLog *log.Logger // log d'errors
+}
+
+var myApp Config
+
 func main() {
-	// creem un canvas
-	app := app.New()
-	// creem finestra i el seu títol
-	window := app.NewWindow("La meva App")
-	// creem contingut
-	window.SetContent(widget.NewLabel("Hola Classe"))
-	window.ShowAndRun()
+
 }
