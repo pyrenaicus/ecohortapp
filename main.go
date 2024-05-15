@@ -32,8 +32,10 @@ func main() {
 	// Repositori de la BBDD
 
 	// Configuració de la pantalla
-	myApp.MainWindow := fyneApp.NewWindow("Eco Hort App")
-	myApp.MainWindow.Resize(fyne.NewSize(800,500)) // Definim tamany finestra pral
-		// Mostrar i executar l'app
-		window.ShowAndRun()
+	myApp.MainWindow = fyneApp.NewWindow("Eco Hort App")
+	myApp.MainWindow.Resize(fyne.NewSize(800, 500)) // Definim tamany finestra pral
+	myApp.MainWindow.SetFixedSize(true)             // Fixem el tamany
+	myApp.MainWindow.SetMaster()                    // PIndiquem que es pantalla pral
+	// Mostrar i executar l'app
+	window.ShowAndRun()
 }
