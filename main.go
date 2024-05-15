@@ -15,5 +15,15 @@ type Config struct {
 var myApp Config
 
 func main() {
+	// Crear app amb fyne
 
+	// definirem els nostres logs
+
+	// Conexió a la BBDD
+
+	// Repositori de la BBDD
+
+	// Configuració de la pantalla
+
+	// Mostrar i executar l'app
 }
