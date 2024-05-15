@@ -9,9 +9,10 @@ import (
 )
 
 type Config struct {
-	App      fyne.App    // guardat de l'App, el canvas
-	InfoLog  *log.Logger // log d'execució
-	ErrorLog *log.Logger // log d'errors
+	App        fyne.App    // guardat de l'App, el canvas
+	InfoLog    *log.Logger // log d'execució
+	ErrorLog   *log.Logger // log d'errors
+	MainWindow fyne.Window // Pantall principal de l'App
 }
 
 var myApp Config
@@ -31,8 +32,8 @@ func main() {
 	// Repositori de la BBDD
 
 	// Configuració de la pantalla
-	window := fyneApp.NewWindow("Eco Hort App")
-
-	// Mostrar i executar l'app
-	window.ShowAndRun()
+	myApp.MainWindow := fyneApp.NewWindow("Eco Hort App")
+	myApp.MainWindow.Resize(fyne.NewSize(800,500)) // Definim tamany finestra pral
+		// Mostrar i executar l'app
+		window.ShowAndRun()
 }
