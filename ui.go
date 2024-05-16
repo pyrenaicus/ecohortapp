@@ -15,4 +15,6 @@ func (app *Config) makeUI() {
 	//Incloure el contenidor a la finestra principal
 	app.ClimaDadesContainer = climaDadesContenidor
 
+	contenidorFinal := container.NewVBox(climaDadesContenidor)
+	app.MainWindow.SetContent(contenidorFinal)
 }
