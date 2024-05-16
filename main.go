@@ -37,7 +37,7 @@ func main() {
 
 	// Configuració de la pantalla
 	myApp.MainWindow = fyneApp.NewWindow("Eco Hort App")
-	myApp.MainWindow.Resize(fyne.NewSize(800, 500)) // Definim tamany finestra pral
+	myApp.MainWindow.Resize(fyne.NewSize(800, 700)) // Definim tamany finestra pral
 	myApp.MainWindow.SetFixedSize(true)             // Fixem el tamany
 	myApp.MainWindow.SetMaster()                    // PIndiquem que es pantalla pral
 
