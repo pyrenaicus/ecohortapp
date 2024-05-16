@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 )
 
 type PreUrl struct {
@@ -88,10 +88,18 @@ type Prediccion struct {
 	Dia []Dia `json:"dia"`
 }
 
-func main() {
+type Diaria struct {
+	ProbPrecipitacio int       `json:"probPrecipitacion"`
+	TemperaturaMax   int       `json:"maxima"`
+	TemperaturaMin   int       `json:"minima"`
+	HumitatRelativa  int       `json:"humedadRelativa"`
+	Time             time.Time `json:"-"`
+}
+
+func GetPrediccions() (*Diaria, error) {
 	url, _ := GetPreUrl()
-	valors, _ := GetPrediccio(url)
-	fmt.Println(valors)
+	valors, err := GetPrediccio(url)
+	return valors, err
 }
 
 func GetPreUrl() (string, error) {
@@ -127,7 +135,7 @@ func GetPreUrl() (string, error) {
 
 }
 
-func GetPrediccio(url string) ([]int, error) {
+func GetPrediccio(url string) (*Diaria, error) {
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -161,6 +169,13 @@ func GetPrediccio(url string) ([]int, error) {
 	tempMin = prediccio[0].Prediccion.Dia[0].Temperatura.Minima
 	humitat = prediccio[0].Prediccion.Dia[0].HumedadRelativa.Maxima
 
-	parte := []int{precipitacio, tempMax, tempMin, humitat}
-	return parte, err
+	var parte = Diaria{
+		ProbPrecipitacio: precipitacio,
+		TemperaturaMax:   tempMax,
+		TemperaturaMin:   tempMin,
+		HumitatRelativa:  humitat,
+		Time:             time.Now(),
+	}
+
+	return &parte, err // retoorn
 }
