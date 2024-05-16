@@ -96,7 +96,7 @@ type Diaria struct {
 	Time             time.Time `json:"-"`
 }
 
-func GetPrediccions() (*Diaria, error) {
+func (app *Diaria) GetPrediccions() (*Diaria, error) {
 	url, _ := GetPreUrl()
 	valors, err := GetPrediccio(url)
 	return valors, err
