@@ -19,11 +19,26 @@ func (app *Config) pronosticTab() *fyne.Container {
 
 func (app *Config) obtenirGrafic() *canvas.Image {
 	url := "https://my.meteoblue.com/images/meteogram?temperature_units=C&wind_units=kmh&precipitation_units=mm&darkmode=true&iso2=es&lat=41.5168&lon=1.901&asl=111&tz=Europe%2FMadrid&dpi=72&apikey=jhMJTOUVRNvs25m4&lang=en&location_name=Abrera&windspeed_units=kmh&sig=2496a6325c6725ea1e1adc17ac02cde7"
-	downloadImage(url)
-	// es pugii recuperar
 
-	// Quan no
-	return nil
+	var img *canvas.Image
+
+	err := app.downloadImage(url, "pronostic.png")
+	if err != nil {
+		// Quan no
+
+	} else {
+		// es pugii recuperar
+		img = canvas.NewImageFromFile("pronostic.png")
+	}
+
+	img.SetMinSize(fyne.Size{
+		Width:  770,
+		Height: 410,
+	})
+
+	img.FillMode = canvas.ImageFillOriginal
+
+	return img
 }
 
 func (app *Config) downloadImage(url string, nomArxiu string) error {
