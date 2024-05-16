@@ -22,9 +22,11 @@ func (app *Config) makeUI() {
 	// carrega del toolbar
 	barraEines := app.getToolbar(app.MainWindow)
 
+	// carrega grafic de la 1a pestanya
+	contenidorGraficPestanya := app.pronosticTab()
 	// pestanyes
 	pestanyes := container.NewAppTabs(
-		container.NewTabItemWithIcon("Pronòstic", theme.HomeIcon(), canvas.NewText("cascascas", nil)),
+		container.NewTabItemWithIcon("Pronòstic", theme.HomeIcon(), contenidorGraficPestanya),
 		container.NewTabItemWithIcon("Diari Meteorològic", theme.InfoIcon(), canvas.NewText("cascascas", nil)),
 	)
 	// alineacio pestanyes superior

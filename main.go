@@ -10,12 +10,13 @@ import (
 )
 
 type Config struct {
-	App                 fyne.App    // guardat de l'App, el canvas
-	InfoLog             *log.Logger // log d'execució
-	ErrorLog            *log.Logger // log d'errors
-	MainWindow          fyne.Window // Pantall principal de l'App
-	ClimaDadesContainer *fyne.Container
-	HTTPClient          http.Client
+	App                      fyne.App    // guardat de l'App, el canvas
+	InfoLog                  *log.Logger // log d'execució
+	ErrorLog                 *log.Logger // log d'errors
+	MainWindow               fyne.Window // Pantall principal de l'App
+	ClimaDadesContainer      *fyne.Container
+	PronosticGraficContainer *fyne.Container // Grafi de la 1a pestanya
+	HTTPClient               http.Client
 }
 
 var myApp Config

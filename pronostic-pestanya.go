@@ -11,10 +11,14 @@ import (
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
+	"fyne.io/fyne/v2/container"
 )
 
 func (app *Config) pronosticTab() *fyne.Container {
-	return nil
+	image := app.obtenirGrafic()
+	contenidorGrafic := container.NewVBox(image)
+	app.PronosticGraficContainer = contenidorGrafic
+	return contenidorGrafic
 }
 
 func (app *Config) obtenirGrafic() *canvas.Image {
@@ -25,6 +29,7 @@ func (app *Config) obtenirGrafic() *canvas.Image {
 	err := app.downloadImage(url, "pronostic.png")
 	if err != nil {
 		// Quan no
+		img = canvas.NewImageFromResource(resourceNodisponiblePng)
 
 	} else {
 		// es pugii recuperar
