@@ -17,4 +17,8 @@ func (app *Config) makeUI() {
 
 	contenidorFinal := container.NewVBox(climaDadesContenidor)
 	app.MainWindow.SetContent(contenidorFinal)
+	// carrega del toolbar
+	barraEines := app.getToolbar(app.MainWindow)
+	contenidorFinal = container.NewVBox(climaDadesContenidor, barraEines)
+	app.MainWindow.SetContent(contenidorFinal)
 }
