@@ -1,6 +1,8 @@
 package main
 
 import (
+	"time"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
@@ -35,6 +37,14 @@ func (app *Config) makeUI() {
 
 	contenidorFinal := container.NewVBox(climaDadesContenidor, barraEines, pestanyes)
 	app.MainWindow.SetContent(contenidorFinal)
+
+	// fn anonima controlada per una goroutine
+	go func() {
+		// execucio cada 30 segons
+		for range time.Tick(time.Second * 30) {
+			app.actualitzarClimaDadesContent()
+		}
+	}()
 }
 
 func (app *Config) actualitzarClimaDadesContent() {
