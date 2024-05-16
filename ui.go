@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
@@ -34,4 +35,15 @@ func (app *Config) makeUI() {
 
 	contenidorFinal := container.NewVBox(climaDadesContenidor, barraEines, pestanyes)
 	app.MainWindow.SetContent(contenidorFinal)
+}
+
+func (app *Config) actualitzarClimaDadesContent() {
+	precipitacio, tempMax, tempMin, humitat := app.getClimaText()
+	app.ClimaDadesContainer.Objects = []fyne.CanvasObject{precipitacio, tempMax, tempMin, humitat}
+	app.ClimaDadesContainer.Refresh()
+
+	grafic := app.obtenirGrafic()
+	app.PronosticGraficContainer.Objects = []fyne.CanvasObject{grafic}
+	app.PronosticGraficContainer.Refresh()
+
 }

@@ -41,7 +41,7 @@ func (app *Config) obtenirGrafic() *canvas.Image {
 		Height: 410,
 	})
 
-	img.FillMode = canvas.ImageFillOriginal
+	// img.FillMode = canvas.ImageFillOriginal
 
 	return img
 }
