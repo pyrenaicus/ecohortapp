@@ -12,6 +12,7 @@ func (app *Config) makeUI() {
 		tempMin,
 		humitat,
 	)
-
 	//Incloure el contenidor a la finestra principal
+	app.ClimaDadesContainer = climaDadesContenidor
+
 }
