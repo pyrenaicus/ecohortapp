@@ -27,6 +27,8 @@ func (app *Config) makeUI() {
 		container.NewTabItemWithIcon("Pronòstic", theme.HomeIcon(), canvas.NewText("cascascas", nil)),
 		container.NewTabItemWithIcon("Diari Meteorològic", theme.InfoIcon(), canvas.NewText("cascascas", nil)),
 	)
+	// alineacio pestanyes superior
+	pestanyes.SetTabLocation(container.TabLocationTop)
 
 	contenidorFinal := container.NewVBox(climaDadesContenidor, barraEines, pestanyes)
 	app.MainWindow.SetContent(contenidorFinal)
