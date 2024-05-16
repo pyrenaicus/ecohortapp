@@ -24,13 +24,12 @@ func (app *Config) getClimaText() (*canvas.Text, *canvas.Text, *canvas.Text, *ca
 		tempMin = canvas.NewText("Temp. Min.: No definit", gris)
 		humitat = canvas.NewText("Humitat: No definit", gris)
 	} else {
-		// coid pier quan funcioni
+		// codi per quan funcioni
 		colorin := color.NRGBA{R: 0, G: 180, B: 0, A: 255}
-		// Filtre si es menor a 50
+		// Filtre si es menor a 50``
 		if prediccio.ProbPrecipitacio < 50 {
-			colorin := color.NRGBA{R: 180, G: 0, B: 0, A: 255}
+			colorin = color.NRGBA{R: 180, G: 0, B: 0, A: 255}
 		}
-
 		// preparem els texts
 		precipitacioTxt := fmt.Sprintf("Precipitació: %d%%", prediccio.ProbPrecipitacio)
 		tempMaxTxt := fmt.Sprintf("temp. Max.: %dº", prediccio.TemperaturaMax)
@@ -41,6 +40,7 @@ func (app *Config) getClimaText() (*canvas.Text, *canvas.Text, *canvas.Text, *ca
 		tempMax = canvas.NewText(tempMaxTxt, nil)
 		tempMin = canvas.NewText(tempMinTxt, nil)
 		humitat = canvas.NewText(humitatTxt, colorin)
+
 	}
 
 	precipitacio.Alignment = fyne.TextAlignLeading
