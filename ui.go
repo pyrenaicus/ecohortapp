@@ -48,6 +48,7 @@ func (app *Config) makeUI() {
 }
 
 func (app *Config) actualitzarClimaDadesContent() {
+	app.InfoLog.Println("Actualitzant dades")
 	precipitacio, tempMax, tempMin, humitat := app.getClimaText()
 	app.ClimaDadesContainer.Objects = []fyne.CanvasObject{precipitacio, tempMax, tempMin, humitat}
 	app.ClimaDadesContainer.Refresh()
