@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -90,7 +91,7 @@ type Prediccion struct {
 func main() {
 	url, _ := GetPreUrl()
 	valors, _ := GetPrediccio(url)
-	// fmt.Println(url)
+	fmt.Println(valors)
 }
 
 func GetPreUrl() (string, error) {
