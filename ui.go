@@ -12,17 +12,17 @@ import (
 func (app *Config) makeUI() {
 	// Conectem amb API aemet i obtenim dades filtrades
 	precipitacio, tempMax, tempMin, humitat := app.getClimaText()
-	//Incloure la info al contenidor
+	//Incloure les dades obtenides al contenidor
 	climaDadesContenidor := container.NewGridWithColumns(4,
 		precipitacio,
 		tempMax,
 		tempMin,
 		humitat,
 	)
-	//Incloure el contenidor a la finestra principal
+	//Incloure el contenidor a la finestra principal, assignant-lo a la clau ClimaDadesContainer
 	app.ClimaDadesContainer = climaDadesContenidor
 
-	// carrega del toolbar
+	// carrega del toolbar, cridant la nostra fn
 	barraEines := app.getToolbar(app.MainWindow)
 
 	// carrega grafic de la 1a pestanya

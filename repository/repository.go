@@ -13,7 +13,11 @@ var (
 type Repository interface {
 	Migrate() error
 	// Crear, Llegir un elment, llegir tots, Update, Borrar
-
+	InsertRegistre(registre Registres) (*Registres, error)
+	ObtenirTotsRegistres() ([]Registres, error)
+	ObtenirRegistrePerID(id int64) (*Registres, error)
+	ActualitzarRegistre(id int64, actualitzar Registres) error
+	BorrarRegistre(id int64) error
 }
 
 type Registres struct {
