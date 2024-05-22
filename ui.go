@@ -4,7 +4,6 @@ import (
 	"time"
 
 	"fyne.io/fyne/v2"
-	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
 )
@@ -27,10 +26,12 @@ func (app *Config) makeUI() {
 
 	// carrega grafic de la 1a pestanya
 	contenidorGraficPestanya := app.pronosticTab()
+	// carregar el contingut dels registres
+	contenidorRegistresPestanya := app.registresTab()
 	// pestanyes
 	pestanyes := container.NewAppTabs(
 		container.NewTabItemWithIcon("Pronòstic", theme.HomeIcon(), contenidorGraficPestanya),
-		container.NewTabItemWithIcon("Diari Meteorològic", theme.InfoIcon(), canvas.NewText("cascascas", nil)),
+		container.NewTabItemWithIcon("Diari Meteorològic", theme.InfoIcon(), contenidorRegistresPestanya),
 	)
 	// alineacio pestanyes superior
 	pestanyes.SetTabLocation(container.TabLocationTop)
@@ -56,5 +57,9 @@ func (app *Config) actualitzarClimaDadesContent() {
 	grafic := app.obtenirGrafic()
 	app.PronosticGraficContainer.Objects = []fyne.CanvasObject{grafic}
 	app.PronosticGraficContainer.Refresh()
+}
 
+func (app *Config) actualitzarRegistresTable() {
+	app.Registres = app.getRegistresSlice()
+	app.RegistresTable.Refresh()
 }

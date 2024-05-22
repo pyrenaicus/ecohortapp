@@ -9,6 +9,7 @@ import (
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/widget"
 	_ "fyne.io/fyne/v2/widget"
 	_ "github.com/glebarez/go-sqlite"
 )
@@ -23,6 +24,8 @@ type Config struct {
 	PronosticGraficContainer *fyne.Container       // Grafi de la 1a pestanya
 	DB                       repository.Repository // Punter de la DB
 	HTTPClient               http.Client
+	RegistresTable           *widget.Table
+	Registres                [][]interface{}
 }
 
 // declarem myApp de tipus Config
@@ -81,7 +84,7 @@ func (app *Config) connectSQL() (*sql.DB, error) {
 
 // funció per configurar la bd amb el migrate
 func (app *Config) setupDB(sqlDB *sql.DB) {
-	repository.NewSQLiteRepository(sqlDB)
+	app.DB = repository.NewSQLiteRepository(sqlDB)
 	err := app.DB.Migrate()
 	if err != nil {
 		app.ErrorLog.Println(err)
